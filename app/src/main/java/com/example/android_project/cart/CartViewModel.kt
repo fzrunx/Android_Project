@@ -30,10 +30,17 @@ class CartViewModel(application: Application): AndroidViewModel(application)  {
 
         }
     }
+    fun deleteCart(item: CartRoom) = viewModelScope.launch {
+        dao.delete(item)
+    }
 
-    fun removeCart(item: CartRoom) {
-        viewModelScope.launch {
-            dao.delete(item)
+    fun increaseQuantity(item: CartRoom) = viewModelScope.launch {
+        dao.updateQuantity(item.id, item.quantity + 1)
+    }
+
+    fun decreaseQuantity(item: CartRoom) = viewModelScope.launch {
+        if (item.quantity > 1) {
+            dao.updateQuantity(item.id, item.quantity - 1)
         }
     }
 }

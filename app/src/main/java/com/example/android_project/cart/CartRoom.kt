@@ -11,5 +11,6 @@ data class CartRoom(
     val productId: String,
     val image: String,
     val link: String,
-    val keyword: String
+    val keyword: String,
+    val quantity: Int = 1   // 기본 1
 )
