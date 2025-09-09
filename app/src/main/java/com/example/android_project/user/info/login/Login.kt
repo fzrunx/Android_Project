@@ -66,34 +66,39 @@ fun LoginScreen(navController: NavController, modifier: Modifier = Modifier, vie
         )
 
         Spacer(modifier = Modifier.height(25.dp))
-        Row() {
-            // 로그인 버튼
-            Button(onClick = {
-                viewModel.login(userId, password) { success ->
-                    if (success) {
-                        loginError = false
-                        navController.navigate("main_Screen")
-                    } else {
-                        loginError = true
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Row {
+                // 로그인 버튼
+                Button(onClick = {
+                    viewModel.login(userId, password) { success ->
+                        if (success) {
+                            loginError = false
+                            navController.navigate("main_Screen")
+                        } else {
+                            loginError = true
+                        }
                     }
+                }) {
+                    Text("로그인")
                 }
-            }) {
-                Text("로그인")
+
+                Spacer(modifier = Modifier.width(8.dp))
+
+                // 회원가입 버튼
+                Button(onClick = { navController.navigate("sign_Up") }) {
+                    Text("회원가입")
+                }
             }
 
+            // 로그인 실패 문구
             if (loginError) {
-                Text("아이디 또는 비밀번호가 올바르지 않습니다.", color = Color.Red)
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    "아이디 또는 비밀번호가 올바르지 않습니다.",
+                    color = Color.Red
+                )
             }
+        }
 
-            Spacer(modifier = Modifier.width(8.dp))
-            // 회원가입 버튼 추가
-            Button(onClick = { navController.navigate("sign_Up") }) {
-                Text("회원가입")
-            }
-        }
-        if (loginError) {
-            Spacer(modifier = Modifier.height(12.dp))
-            Text("아이디 또는 비밀번호가 올바르지 않습니다.", color = Color.Red)
-        }
     }
 }

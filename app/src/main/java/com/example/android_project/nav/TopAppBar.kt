@@ -1,25 +1,32 @@
 package com.example.android_project.nav
 
-
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.android_project.user.info.login.LoginViewModel
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,26 +57,47 @@ fun TopAppBar(navController: NavController, isLoggedIn: Boolean, userId: String?
                 IconButton(
                     onClick = {
                         viewModel.logout()
-                        // 로그아웃 후 로그인 화면으로 이동 (옵션)
-                        navController.navigate("login") {
+                        navController.navigate("main_Screen") {
                             popUpTo("main_Screen") { inclusive = true }
                         }
                     },
-                    modifier = Modifier.background(Color.Gray)
+                    modifier = Modifier.widthIn(min = 70.dp) // <- 여기 추가
                 ) {
-                    Text("로그아웃", color = Color.White)
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Icon(
+                            imageVector = Icons.Default.AccountCircle,
+                            contentDescription = "로그아웃",
+                            tint = Color.Black,
+                            modifier = Modifier.size(24.dp)
+                        )
+                        Text(
+                            text = "로그아웃",
+                            color = Color.Black,
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
                 }
             } else {
                 // 로그아웃 상태 → 로그인 버튼
                 IconButton(
-                    onClick = {
-                        navController.navigate("login")
-                    },
-                    modifier = Modifier.background(Color.Gray)
+                    onClick = { navController.navigate("login") },
+                    modifier = Modifier.widthIn(min = 70.dp) // <- 여기 추가
                 ) {
-                    Text("로그인", color = Color.White)
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Icon(
+                            imageVector = Icons.Default.AccountCircle,
+                            contentDescription = "로그인",
+                            tint = Color.Black,
+                        )
+                        Text(
+                            text = "로그인",
+                            color = Color.Black,
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
                 }
             }
         }
+
     )
 }

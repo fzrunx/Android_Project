@@ -2,6 +2,7 @@ package com.example.android_project.nav
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -26,6 +27,12 @@ fun BottomAppBar(navController: NavController) {
         NavigationBarItem(
             icon = { Icon(Icons.Default.ShoppingCart, contentDescription = "cart") },
             label = { Text("장바구니") },
+            selected = currentRoute == "cart_Screen",
+            onClick = { navController.navigate("cart_Screen") }
+        )
+        NavigationBarItem(
+            icon = { Icon(Icons.Default.Person, contentDescription = "cart") },
+            label = { Text("마이페이지") },
             selected = currentRoute == "cart_Screen",
             onClick = { navController.navigate("cart_Screen") }
         )
