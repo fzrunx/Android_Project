@@ -3,6 +3,7 @@ package com.example.android_project.user.info.login
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.android_project.user.info.SignUpRoom
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,6 +19,7 @@ class LoginViewModel(private val context: Context, private val repository: Login
     val currentUserId: StateFlow<String?> get() = _currentUserId
     private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> get() = _isLoading
+
 
     /** 로그인 */
     fun login(userId: String, password: String, onResult: (Boolean) -> Unit) {

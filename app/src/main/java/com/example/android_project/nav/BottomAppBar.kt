@@ -31,10 +31,10 @@ fun BottomAppBar(navController: NavController) {
             onClick = { navController.navigate("cart_Screen") }
         )
         NavigationBarItem(
-            icon = { Icon(Icons.Default.Person, contentDescription = "cart") },
+            icon = { Icon(Icons.Default.Person, contentDescription = "mypage") },
             label = { Text("마이페이지") },
-            selected = currentRoute == "cart_Screen",
-            onClick = { navController.navigate("cart_Screen") }
+            selected = currentRoute == "mypage_Screen",
+            onClick = { navController.navigate("mypage_Screen") }
         )
     }
 }

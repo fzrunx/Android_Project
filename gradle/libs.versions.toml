@@ -14,6 +14,7 @@ roomRuntimeJvm = "2.7.2"
 firebaseFirestoreKtx = "25.1.1"
 playServicesCastFramework = "22.1.0"
 uiTest = "1.9.0"
+material3 = "1.3.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,6 +37,7 @@ androidx-room-runtime-jvm = { group = "androidx.room", name = "room-runtime-jvm"
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
 play-services-cast-framework = { group = "com.google.android.gms", name = "play-services-cast-framework", version.ref = "playServicesCastFramework" }
 androidx-ui-test = { group = "androidx.compose.ui", name = "ui-test", version.ref = "uiTest" }
+material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -112,8 +112,8 @@ fun MainScreen(navController: NavController, modifier: Modifier = Modifier, view
                             .padding(8.dp)
                             .aspectRatio(0.666f) // 가로:세로 = 1:1.5
                             .clickable {
-                                val encodedUrl = Uri.encode(item.link) // 특수문자 처리
-                                navController.navigate("webview/$encodedUrl")
+                                val encodedId = Uri.encode(item.productId)// 특수문자 처리
+                                navController.navigate("shopping_Detail/$encodedId")
                             }
                     ) {
                         Column(modifier = Modifier.padding(8.dp)) {
@@ -133,6 +133,15 @@ fun MainScreen(navController: NavController, modifier: Modifier = Modifier, view
                                     .fillMaxWidth()
                                     .padding(vertical = 4.dp)
                                     .weight(1f) // 이미지가 카드 안에서 공간을 균등하게 차지
+                            )
+                            // ✅ 가격 표시
+                            Text(
+                                text = "${item.lprice}원", // 가격 표시
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = MaterialTheme.colorScheme.primary, // 가격은 강조색
+                                modifier = Modifier
+                                    .padding(top = 4.dp)
+                                    .align(Alignment.CenterHorizontally)
                             )
                             Button(
                                 onClick = { cartViewModel.addToCart(item, searchKeyword) },

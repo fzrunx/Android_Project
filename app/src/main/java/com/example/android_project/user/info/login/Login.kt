@@ -28,7 +28,7 @@ import androidx.navigation.NavController
 import com.example.android_project.user.info.SignUpDB
 
 @Composable
-fun LoginScreen(navController: NavController, modifier: Modifier = Modifier, viewModel: LoginViewModel) {
+fun LoginScreen(navController: NavController, modifier: Modifier = Modifier, viewModel: LoginViewModel, redirect: String? = null) {
     var userId by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var loginError by remember { mutableStateOf(false) }
@@ -73,7 +73,13 @@ fun LoginScreen(navController: NavController, modifier: Modifier = Modifier, vie
                     viewModel.login(userId, password) { success ->
                         if (success) {
                             loginError = false
-                            navController.navigate("main_Screen")
+                            if (!redirect.isNullOrEmpty()) {
+                                navController.navigate(redirect) {
+                                    popUpTo(redirect) { inclusive = true }
+                                }
+                            } else {
+                                navController.navigate("main_Screen")
+                            }
                         } else {
                             loginError = true
                         }

@@ -74,5 +74,8 @@ class ShoppingViewModel: ViewModel() {
     fun setSearchKeyword(keyword: String) {
         _searchKeyword.value = keyword
     }
+    fun getProductById(productId: String): ShoppingItem? {
+        return _shoppingList.value.find { it.productId == productId }
+    }
 }
 
