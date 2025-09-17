@@ -12,7 +12,7 @@ interface ShoppingApi {
     @GET("v1/search/shop.json")
     suspend fun shopping(
         @Query("query") query: String,
-        @Query("display") display: Int = 10,
+        @Query("display") display: Int = 100,
         @Query("start") start: Int = 1,
         @Query("sort") sort: String ="sim",
         @Query("filter") filter: String = "",

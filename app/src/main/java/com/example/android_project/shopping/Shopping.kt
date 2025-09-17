@@ -27,6 +27,7 @@ data class ShoppingItem(
     val category2: String, // 중분류
     val category3: String, // 소분류
     val category4: String, // 세분류
+    val keyword: String? = null
 )
 
 @Entity(tableName = "shopping_cart")  // 즉 여기 엔티티로 가져올때 위에 내가 필요한 Items에 데이터만 가져오게 작성하면됨
@@ -34,6 +35,7 @@ data class ShoppingCartItems(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val productId: String,
     val title: String,
+    val lprice: String,
     val image: String,
     val link: String,
     val keyword: String,          // 검색어

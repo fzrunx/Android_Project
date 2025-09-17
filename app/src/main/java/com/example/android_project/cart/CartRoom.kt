@@ -11,5 +11,12 @@ data class CartRoom(
     val productId: String,
     val image: String,
     val link: String,
-    val keyword: String
+    val keyword: String,
+    val lprice: String,             // ✅ 가격 추가
+    val quantity: Int = 1 ,  // 기본 1
+    var isSelected: Boolean = false   // ✅ 체크박스 상태 추가
+)
+data class CartItemUi(
+    val cartItem: CartRoom,
+    var isSelected: Boolean = false
 )
